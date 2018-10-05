@@ -96,9 +96,7 @@ setTimeout(function() {
     var currentMonth = month[date.getMonth()];
     var selectedValue = $("#MainContent_ddlSwipeMonth option:selected").text();
     var selectedMonth = selectedValue.split(",")[0];    
-    currentMonth === selectedMonth ? laggHours = metExpectedHours : laggHours = "null";
-    currentMonth === selectedMonth ? neededHours = neededHours : neededHours = "null";
-
+    currentMonth === selectedMonth ? laggHours = metExpectedHours : laggHours = "0";    
     var netData = $($(".grdwfa").find("tr")[1]).find("td")[5].textContent;
     var spliceHours;
     var spliceMints;
@@ -114,6 +112,7 @@ setTimeout(function() {
     var perDayHours = "08.00";
     var neededHrsDec = perDayHours - netHours;
     var neededHours = ('0' + Math.floor(neededHrsDec) % 24).slice(-2) + ':' + ((neededHrsDec % 1) * 60 + '0').slice(0, 2);
+    currentMonth === selectedMonth ? neededHours = neededHours : neededHours = "0";
     var requiredHoursStyles;
     var requiredHoursBG;
     spliceHours<8 ? requiredHoursBG = "crimson" : requiredHoursBG= "green";
